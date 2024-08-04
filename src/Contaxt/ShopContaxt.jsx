@@ -20,7 +20,7 @@ const ShopCantaxtProvider = (props) =>{
 
     const addToCart = (itemId) =>{
         setCartItem((prev)=>({...prev,[itemId]:prev[itemId]+1}))
-        console.log(cartItems)
+        alert("Your Product is Succesfully add to the Cart")
     }
 
     const removeFromCart = (itemId) =>{

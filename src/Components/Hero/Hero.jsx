@@ -18,7 +18,7 @@ const Hero = () =>{
                     <p>for everyone</p>
                 </div>
                 <div className="hero-latest-btn">
-                    <div>Latest Collections</div>
+                    <div onClick={()=>{alert("Sorry for The inconvenience the site is under construction ")}}>Latest Collections</div>
                     <img src={arrow_icon} alt="" />
                 </div>
             </div>

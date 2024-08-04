@@ -11,7 +11,7 @@ const LoginSignup = () =>{
                     <input type="email" placeholder="Email Address" />
                     <input type="password" placeholder="Password" />
                 </div>
-                <button>Continue</button>
+                <button onClick={()=>{alert("Sorry ! there is no backend connectiviy")}}>Continue</button>
                 <p className="loginsignup-login">Already have and an account ? <span>Login Here</span></p>
                 <div className="loginsignup-agree">
                 <input type="checkbox" name="" id="" />

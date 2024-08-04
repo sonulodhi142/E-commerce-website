@@ -27,8 +27,30 @@ const ShopCantaxtProvider = (props) =>{
         setCartItem((prev)=>({...prev,[itemId]:prev[itemId]-1}))
     }
 
+    const getTotalCartAmount = () =>{
+        let totalAmout = 0;
+        for(const item in cartItems){
+            if(cartItems[item]>0){
+                let itemInfo = all_product.find((product)=>product.id===Number(item))
+                totalAmout += itemInfo.new_price * cartItems[item];
+            }
+        }
+        return totalAmout;
+    }
+
+    const getTotalCartItem = () =>{
+        let TotalItem = 0;
+        for(const item in cartItems){
+            if(cartItems[item]>0){
+                TotalItem += cartItems[item];
+            }
+        }
+        return TotalItem;
+    }
     
-    const contaxtValue = {all_product,cartItems,addToCart,removeFromCart}
+    
+    
+    const contaxtValue = {getTotalCartItem,getTotalCartAmount, all_product,cartItems,addToCart,removeFromCart}
     
 
     return(

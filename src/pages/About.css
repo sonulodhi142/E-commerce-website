@@ -1,0 +1,68 @@
+/* Main container for the About section */
+.about {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0px 40px 150px rgba(147, 196, 33, 0.1);
+    margin: 200px auto;
+    max-width: 1200px;
+  }
+  
+  /* Left section with text content */
+  .about-left {
+    flex: 1;
+    padding-right: 20px;
+  }
+  
+  .about-left h1 {
+    font-size: 36px;
+    color: #007bff;
+    margin-bottom: 10px;
+  }
+  
+  .about-left h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .about-left p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+  }
+  
+  /* Right section with image */
+  .about-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .about-right img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .about {
+      flex-direction: column;
+      padding: 20px;
+    }
+  
+    .about-left {
+      padding-right: 0;
+      margin-bottom: 20px;
+    }
+  
+    .about-right img {
+      max-width: 100%;
+    }
+  }
+  

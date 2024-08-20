@@ -1,0 +1,94 @@
+.new-price{
+    font-size: 3rem;
+  }
+
+  .item-name{
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+
+
+
+
+/* Main container for each cart item */
+.cart {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Flexbox container for the items in the cart */
+  .cartitems-format {
+    
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  /* Additional formatting to the main cart item container */
+  .cartitems-format-main {
+    padding: 10px 0;
+  }
+
+
+  
+  /* Product image in the cart */
+  .cartitems-product-icon {
+    width: 400px;
+    height: 400px;
+    border-radius: 5px;
+    object-fit: cover;
+  }
+  
+  /* Product name styling */
+  .cartitems-format p {
+    flex: 1;
+    margin: 0 15px;
+    
+    color: #333;
+  }
+  
+  /* Price styling */
+  .cartitems-format p:last-of-type {
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  /* Order Now button */
+  .cartitems-quantity {
+    padding: 8px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+  }
+  
+  /* Hover effect for the Order Now button */
+  .cartitems-quantity:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Remove icon styling (adjust as needed) */
+  .cartitem-remove-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+  
+  /* Divider styling */
+  hr {
+    border: 0;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin-top: 10px;
+  }
+  
+  .old-price{
+    text-decoration: line-through;
+    font-size: 2rem;
+  }

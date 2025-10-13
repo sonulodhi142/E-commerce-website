@@ -3,7 +3,7 @@ import "./Navbar.css"
 import { Link } from "react-router-dom";
 
 const Navbar = ( ) => {
-
+            // new text to write here
     return(
         <div className="navbar">
             <div className="navbar-logo">

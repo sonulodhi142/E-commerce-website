@@ -1,25 +1,38 @@
-import React from "react";
-import "./Navbar.css"
+import React, { useContext, useState } from "react";
+import "./Navbar.css";
+import logo from '../Assets/logo.png'
+import cart_icon from '../Assets/cart_icon.png'
 import { Link } from "react-router-dom";
+import { ShopContaxt } from "../../Contaxt/ShopContaxt";
 
-const Navbar = ( ) => {
-            // new text to write here
+const Navbar = () =>{
+
+    // setmenu se apn <hr/> ko traverse karenge <li/> me
+    const [menu,setMenu] = useState("shop");
+    const {getTotalCartItem} = useContext(ShopContaxt);
+
+
     return(
         <div className="navbar">
-            <div className="navbar-logo">
-            <Link style={{textDecoration: 'none', color: "black", fontSize: '2rem'}} to="/"><h1>ZOMATO CLONE</h1></Link>
+            <div className="nav-logo">
+                <img src={logo} alt="" />
+                <p>SHOPPERS-STOP</p>
             </div>
-            <div className="Navbar-link">
-            <ul>
-                <li><Link style={{textDecoration: 'none', color: "black"}} to="/">Home</Link></li>
-                <li><Link style={{textDecoration: 'none', color: "black"}} to="/menu">Menu</Link></li>
-                <li><Link style={{textDecoration: 'none', color: "black"}} to="/about">About</Link></li>
-                <li><Link style={{textDecoration: 'none', color: "black"}} to="/contact">Contact</Link></li>
-                <li><Link style={{textDecoration: 'none', color: "black"}} to="/login">LoginSignUP</Link></li>
+            <ul className="nav-menu">
+                <li onClick={()=>{setMenu("shop")}}><Link style={{textDecoration: 'none'}} to="/">Shop</Link>  {menu==="shop"?<hr></hr>:<></>}</li>
+                <li onClick={()=>{setMenu("mens")}}><Link style={{textDecoration: 'none'}} to="/mens">Men</Link> {menu==="mens"?<hr></hr>:<></>}</li>
+                <li onClick={()=>{setMenu("womens")}}><Link style={{textDecoration: 'none'}} to="/womens">Women</Link>{menu==="womens"?<hr></hr>:<></>}</li>
+                <li onClick={()=>{setMenu("kids")}}><Link style={{textDecoration: 'none'}} to="/kids">Kids</Link>{menu==="kids"?<hr></hr>:<></>}</li>
             </ul>
+            <div className="nav-login-cart">
+                <Link style={{textDecoration: 'none'}} to="/login"><button>Login</button></Link>
+                <Link style={{textDecoration: 'none'}} to='/cart '><img src={cart_icon} alt="" /></Link>
+                <div className="nav-cart-count">
+                    {getTotalCartItem()}
+                </div>
             </div>
         </div>
     )
-}
+};
 
 export default Navbar;

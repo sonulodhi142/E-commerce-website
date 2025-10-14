@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
+import ShopCantaxtProvider from './Contaxt/ShopContaxt';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <BrowserRouter>
+    <ShopCantaxtProvider>
         <App />
-    </BrowserRouter>
+    </ShopCantaxtProvider>
   
 );
 

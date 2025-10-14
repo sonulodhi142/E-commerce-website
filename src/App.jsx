@@ -1,38 +1,37 @@
 import React from "react";
 import './App.css';
 import Navbar from "./Components/Navbar/Navbar";
-import { Route, Routes } from "react-router-dom";
-
-import Menu from "./pages/Menu";
-import About from "./pages/About";
-import Contact from "./pages/contactus";
-import ShopCantaxtProvider from "./Contaxt/context";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-  
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Shop from "./Pages/shop";
+import ShopCategory from "./Pages/ShopCategory";
+import Product from "./Pages/Product";
+import Cart from "./Pages/Cart";
+import LoginSignup from "./Pages/LoginSignup";
+import Footer from "./Components/Fotter/Footer";
+import men_banner from './Components/Assets/banner_mens.png'
+import wonem_banner from './Components/Assets/banner_women.png'
+import kid_banner from './Components/Assets/banner_kids.png'
 
 function App() {
 
   return (
-    <ShopCantaxtProvider>
-    <div className="app">
-     
-      <div>
+    <div>
+      <BrowserRouter>
       <Navbar/>
-      </div>
-
-      <div className="path">
       <Routes>
-
-        <Route path="/" element={<Home/>}></Route>
-        <Route path="/menu" element={<Menu/>}></Route>
-        <Route path="/about" element={<About/>}></Route>
-        <Route path="/contact" element={<Contact/>}></Route>
-        <Route path="/login" element={<Login/>} ></Route>
+        <Route path="/" element={<Shop/>}/>
+        <Route path="/mens" element={<ShopCategory banner={men_banner} category="men" />}/>
+        <Route path="/womens" element={<ShopCategory banner={wonem_banner} category="women"/>}/>
+        <Route path="/kids" element={<ShopCategory banner={kid_banner} category="kid"/>}/>
+        <Route path="/product" element={<Product />}>
+        <Route path=":productId" element={<Product/>}/>
+        </Route>
+        <Route path="/cart" element={<Cart/>}/>
+        <Route path="/login" element={<LoginSignup/>}/>
       </Routes>
-      </div>
+      <Footer/>
+      </BrowserRouter>
     </div>
-    </ShopCantaxtProvider>
   );
 
 }

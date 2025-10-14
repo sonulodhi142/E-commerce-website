@@ -1,15 +1,1 @@
-.app{
-   display: flex;
-   flex-direction: column;
-}
 
-.path{
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    width: auto;
-    flex-wrap: wrap;
-    gap: 20px;
-    border-radius: 20px;
-}

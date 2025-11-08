@@ -1,6 +1,6 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import all_product from '../Components/Assets/all_product'
-
+import axios from "axios";
 export const ShopContaxt = createContext(null);
 
 const getDefaultCart = () =>{
@@ -13,9 +13,19 @@ const getDefaultCart = () =>{
 }
 
 const ShopCantaxtProvider = (props) =>{
-
+    const [products , setProducts] = useState();
     const [cartItems, setCartItem] = useState(getDefaultCart);
 
+    useEffect(()=> {
+        axios.get("http://127.0.0.1:8000/api/all_product/")
+        .then((response) => {
+            console.log("api response =",response.data)
+            setProducts(response.data)
+        })
+        .catch((error) => {
+            console.error("Error fetching data:", error)
+        })
+    },[])
     
 
     const addToCart = (itemId) =>{
@@ -50,7 +60,7 @@ const ShopCantaxtProvider = (props) =>{
     
     
     
-    const contaxtValue = {getTotalCartItem,getTotalCartAmount, all_product,cartItems,addToCart,removeFromCart}
+    const contaxtValue = {getTotalCartItem,getTotalCartAmount,products ,all_product,cartItems,addToCart,removeFromCart}
     
 
     return(

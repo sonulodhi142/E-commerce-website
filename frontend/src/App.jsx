@@ -11,6 +11,7 @@ import Footer from "./Components/Fotter/Footer";
 import men_banner from './Components/Assets/banner_mens.png'
 import wonem_banner from './Components/Assets/banner_women.png'
 import kid_banner from './Components/Assets/banner_kids.png'
+import AddCartSucces from "./Components/AddCartSucces/AddCartSucces";
 
 function App() {
 
@@ -30,6 +31,9 @@ function App() {
         </Route>
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/login" element={<LoginSignup/>}/>
+        <Route path="/succes/:productId" element={<AddCartSucces/>}/>
+        <Route path=":productId" element={<AddCartSucces/>}/>
+        
       </Routes>
       <Footer/>
       </BrowserRouter>
@@ -37,4 +41,5 @@ function App() {
   );
 
 }
+
 export default App;

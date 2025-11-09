@@ -9,6 +9,9 @@ import { ShopContaxt } from "../../Contaxt/ShopContaxt";
 const ProductDisplay = (props) =>{
     const {product} = props;
     const {addToCart} = useContext(ShopContaxt);
+
+    
+
     return(
         <div className="productdisplay">
             <div className="productdisplay-left">
@@ -49,13 +52,7 @@ const ProductDisplay = (props) =>{
                     </div>
                 </div>
                 <button onClick={()=>{addToCart(product.id)}} className="openModel">ADD TO CART</button>
-                <div className="modal" id="modal">
-                    <div className="modal-inner">
-                        <h2>Done !</h2>
-                        <p>Succesfully added to the Cart 🫡</p>
-                        <button className="closeModal">close</button>
-                    </div>
-                </div>
+                
                 <p className="productdisplay-right-category">
                     <span>Category :</span>women , T-shirt , Crop Top
                 </p>

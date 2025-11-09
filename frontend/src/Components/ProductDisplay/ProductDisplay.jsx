@@ -48,7 +48,14 @@ const ProductDisplay = (props) =>{
                         <div>XXL</div>
                     </div>
                 </div>
-                <button onClick={()=>{addToCart(product.id)}} >ADD TO CART</button>
+                <button onClick={()=>{addToCart(product.id)}} className="openModel">ADD TO CART</button>
+                <div className="modal" id="modal">
+                    <div className="modal-inner">
+                        <h2>Done !</h2>
+                        <p>Succesfully added to the Cart 🫡</p>
+                        <button className="closeModal">close</button>
+                    </div>
+                </div>
                 <p className="productdisplay-right-category">
                     <span>Category :</span>women , T-shirt , Crop Top
                 </p>

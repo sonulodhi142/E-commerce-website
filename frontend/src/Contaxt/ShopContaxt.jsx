@@ -13,9 +13,10 @@ const getDefaultCart = () =>{
 }
 
 const ShopCantaxtProvider = (props) =>{
+    const [showSuccess, setShowSuccess] = useState(false);
     const [products , setProducts] = useState();
     const [cartItems, setCartItem] = useState(getDefaultCart);
-
+    
     useEffect(()=> {
         axios.get("http://127.0.0.1:8000/api/all_product/")
         .then((response) => {
@@ -30,7 +31,7 @@ const ShopCantaxtProvider = (props) =>{
 
     const addToCart = (itemId) =>{
         setCartItem((prev)=>({...prev,[itemId]:prev[itemId]+1}))
-        alert("Your Product is Succesfully add to the Cart")
+        setShowSuccess(true)
     }
 
     const removeFromCart = (itemId) =>{
@@ -60,7 +61,7 @@ const ShopCantaxtProvider = (props) =>{
     
     
     
-    const contaxtValue = {getTotalCartItem,getTotalCartAmount,products ,all_product,cartItems,addToCart,removeFromCart}
+    const contaxtValue = {getTotalCartItem,getTotalCartAmount,products ,all_product,cartItems,addToCart,removeFromCart,showSuccess,setShowSuccess}
     
 
     return(

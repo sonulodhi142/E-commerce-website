@@ -1,19 +1,20 @@
-import React from "react";
+
 import './ProductDisplay.css';
 import star_icon from '../Assets/star_icon.png'
 import star_dull_icon from '../Assets/star_dull_icon.png'
 import { useContext } from "react";
 import { ShopContaxt } from "../../Contaxt/ShopContaxt";
-
+import AddCartSucces from '../AddCartSucces/AddCartSucces'
 
 const ProductDisplay = (props) =>{
     const {product} = props;
-    const {addToCart} = useContext(ShopContaxt);
-
+    const {addToCart, showSuccess, setShowSuccess} = useContext(ShopContaxt);
     
-
     return(
         <div className="productdisplay">
+             {
+                (showSuccess) ? <AddCartSucces/> : <div></div>
+             }
             <div className="productdisplay-left">
                 <div className="productdisplay-img-list">
                     <img src={product.image} alt="" />

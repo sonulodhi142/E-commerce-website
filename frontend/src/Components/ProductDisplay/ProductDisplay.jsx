@@ -5,6 +5,7 @@ import star_dull_icon from '../Assets/star_dull_icon.png'
 import { useContext } from "react";
 import { ShopContaxt } from "../../Contaxt/ShopContaxt";
 import AddCartSucces from '../AddCartSucces/AddCartSucces'
+import OrderForm from '../OrderForm/OrderForm';
 
 const ProductDisplay = (props) =>{
     const {product} = props;
@@ -61,6 +62,7 @@ const ProductDisplay = (props) =>{
                     <span>Tag :</span>modern , letast , new
                 </p>
             </div>
+            <OrderForm/>
         </div>
     )
 }

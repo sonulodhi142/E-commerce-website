@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import './OrderForm.css'
 import axios from 'axios'
 
-const OrderForm = () => {
-    const [loading, setLoading] = useState(false)
+const OrderForm = ({ loading, showPopup, closePopup, setLoading, setShowPopup}) => {
+    const [Load, setLoad] = useState(false)
     const [formData, setFormData] = useState({
         name : '',
         address: '',
@@ -21,8 +21,13 @@ const OrderForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData)
+    setLoad(true);
     setLoading(true);
-
+    setTimeout(() => {
+      alert('Order submitted successfully!');
+      setLoading(false);
+      setShowPopup(false);
+    }, 1500);
     try {
       const response =axios.post(
         "http://127.0.0.1:8000/api/order/", 
@@ -31,32 +36,39 @@ const OrderForm = () => {
     } catch (error) {
       console.error("Error:", error);
     } finally {
-      setLoading(false);
+      setLoad(false);
     }
   }
 
+  if (!showPopup) return null;
     // axios.post('http://127.0.0.1:8000/api/order/', )
   return (
-    <form method='POST' onSubmit={handleSubmit}>
-        <h1>Enter Details</h1>
-        <input type="text" name='name' onChange={handleChange} placeholder='Enter name' />
-        <br /><br />
-        <input type="text" name="address" onChange={handleChange} placeholder='Enter address' />
-        <br /><br />
-        <input type="number" name='pincode' onChange={handleChange} placeholder='pin code' />
-        <br />
-        <br />
-        <input type="number" name='phoneNo' onChange={handleChange} placeholder='Enter phone no.' />
-        <select name="size" id="" onChange={handleChange}>
-            <option value="S" key="">S</option>
-            <option value="M" key="">M</option>
-            <option value="X" key="">X</option>
-            <option value="XL" key="">XL</option>
-        </select>
-        <button type="submit" disabled={loading}>
-          {loading ? "Submitting..." : "Submit"}
-        </button>
-    </form>
+    <div className="popup-overlay">
+      <div className="popup-container">
+        <button className="close-btn" onClick={closePopup}>×</button>
+        <form method="POST" onSubmit={handleSubmit} className="order-form">
+          <h2>Delivery Details</h2>
+          <p>Please provide your location details to deliver your order.</p>
+
+          <input type="text" name="name" onChange={handleChange} placeholder="Enter your name" required />
+          <input type="text" name="address" onChange={handleChange} placeholder="Enter your address" required />
+          <input type="number" name="pincode" onChange={handleChange} placeholder="Pin code" required />
+          <input type="number" name="phoneNo" onChange={handleChange} placeholder="Phone number" required />
+
+          <label htmlFor="size">Select Size:</label>
+          <select name="size" id="size" onChange={handleChange}>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="X">X</option>
+            <option value="XL">XL</option>
+          </select>
+
+          <button type="submit" disabled={Load}>
+            {Load ? 'Submitting...' : 'Submit'}
+          </button>
+        </form>
+      </div>
+    </div>
   )
 }
 

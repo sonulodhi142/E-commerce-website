@@ -3,25 +3,20 @@ import all_product from '../Components/Assets/all_product'
 import axios from "axios";
 export const ShopContaxt = createContext(null);
 
-const getDefaultCart = () =>{
 
-    let Cart = {};
-    for (let index = 0; index < all_product.length; index++){
-        Cart[index] = 0;
-    }
-    return Cart;
-}
 
 const ShopCantaxtProvider = (props) =>{
     const [showSuccess, setShowSuccess] = useState(false);
     const [products , setProducts] = useState();
-    const [cartItems, setCartItem] = useState(getDefaultCart);
+    const [cartItems, setCartItem] = useState([]);
+    const [loading, setloading] = useState(true);
     
     useEffect(()=> {
         axios.get("http://127.0.0.1:8000/api/all_product/")
         .then((response) => {
             console.log("api response =",response.data)
             setProducts(response.data)
+            setloading(false)
         })
         .catch((error) => {
             console.error("Error fetching data:", error)
@@ -30,38 +25,35 @@ const ShopCantaxtProvider = (props) =>{
     
 
     const addToCart = (itemId) =>{
-        setCartItem((prev)=>({...prev,[itemId]:prev[itemId]+1}))
+        let item = products.find((item)=> item.id === itemId)
+        setCartItem((prev)=>([...prev, item]))
         setShowSuccess(true)
     }
 
     const removeFromCart = (itemId) =>{
-        setCartItem((prev)=>({...prev,[itemId]:prev[itemId]-1}))
+        let items = cartItems.filter((item)=> item.id !== itemId)
+        setCartItem(items)
     }
 
     const getTotalCartAmount = () =>{
         let totalAmout = 0;
-        for(const item in cartItems){
-            if(cartItems[item]>0){
-                let itemInfo = all_product.find((product)=>product.id===Number(item))
-                totalAmout += itemInfo.new_price * cartItems[item];
-            }
-        }
+        cartItems.map((e)=> {
+            return totalAmout += parseInt(e.new_price)
+        })
         return totalAmout;
     }
 
     const getTotalCartItem = () =>{
         let TotalItem = 0;
-        for(const item in cartItems){
-            if(cartItems[item]>0){
-                TotalItem += cartItems[item];
-            }
-        }
+        cartItems.map((e)=> {
+            return TotalItem += 1
+        })
         return TotalItem;
     }
     
     
     
-    const contaxtValue = {getTotalCartItem,getTotalCartAmount,products ,all_product,cartItems,addToCart,removeFromCart,showSuccess,setShowSuccess}
+    const contaxtValue = {getTotalCartItem,getTotalCartAmount,products ,all_product,cartItems,addToCart,removeFromCart,showSuccess,setShowSuccess,loading}
     
 
     return(

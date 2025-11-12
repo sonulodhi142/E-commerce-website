@@ -6,7 +6,7 @@ import remove_icon from '../Assets/cart_cross_icon.png';
  
 const CartItems = () =>{
 
-    const {getTotalCartAmount,all_product,cartItems,removeFromCart}= useContext(ShopContaxt);
+    const {getTotalCartAmount,cartItems,removeFromCart}= useContext(ShopContaxt);
 
     return(
         <div className="cartitems">
@@ -19,21 +19,18 @@ const CartItems = () =>{
                 <p>Remove</p>
             </div>
             <hr />
-            {all_product.map((e)=>{
-                if(cartItems[e.id]>0){
+            {cartItems.map((e)=>{
                     return <div>
                     <div className="cartitems-format cartitems-format-main">
                         <img src={e.image} className="cartitems-product-icon" alt="" />
                         <p>{e.name}</p>
                         <p>{e.new_price}</p>
-                        <button className="cartitems-quantity">{cartItems[e.id]}</button>
-                        <p>${e.new_price*cartItems[e.id]}</p>
+                        <button className="cartitems-quantity">1</button>
+                        <p>${e.new_price*1}</p>
                         <img className="cartitem-remove-icon" src={remove_icon} onClick={()=>{removeFromCart(e.id )}} alt="" />
                     </div>
                     <hr />
                 </div>
-                }
-                return null;
             })}
             <div className="cartitems-down">
                 <div className="cartitems-total">

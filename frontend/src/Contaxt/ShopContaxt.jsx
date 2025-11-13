@@ -20,9 +20,13 @@ const ShopCantaxtProvider = (props) =>{
         })
         .catch((error) => {
             console.error("Error fetching data:", error)
+            setloading(false)
         })
     },[])
     
+    // if(loading){
+    //     setProducts([])
+    // }
 
     const addToCart = (itemId) =>{
         let item = products.find((item)=> item.id === itemId)
